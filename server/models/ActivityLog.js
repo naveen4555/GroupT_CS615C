@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// ─── Schema Definition
 const activityLogSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -25,4 +26,5 @@ const activityLogSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('ActivityLog', activityLogSchema); 
+// ─── Model Export 
+module.exports = mongoose.model('ActivityLog', activityLogSchema);
