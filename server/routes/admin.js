@@ -70,7 +70,35 @@ router.post('/register', async (req, res) => {
     });
   }
 });
+// Middleware to verify admin token
+const verifyAdminToken = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+      return res.status(401).json({
+        message: 'No token provided'
+      });
+    }
 
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+    const admin = await Admin.findById(decoded.id);
+    
+    if (!admin) {
+      return res.status(401).json({
+        message: 'Invalid token'
+      });
+    }
+
+    req.admin = admin;
+    next();
+  } catch (error) {
+    console.error('Error verifying admin token:', error);
+    res.status(401).json({
+      message: 'Invalid token',
+      error: error.message
+    });
+  }
+};
 // Admin Login
 router.post('/login', async (req, res) => {
   console.log('Received login request for email:', req.body.email);
@@ -128,36 +156,6 @@ router.post('/login', async (req, res) => {
     });
   }
 });
-
-// Middleware to verify admin token
-const verifyAdminToken = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) {
-      return res.status(401).json({
-        message: 'No token provided'
-      });
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
-    const admin = await Admin.findById(decoded.id);
-    
-    if (!admin) {
-      return res.status(401).json({
-        message: 'Invalid token'
-      });
-    }
-
-    req.admin = admin;
-    next();
-  } catch (error) {
-    console.error('Error verifying admin token:', error);
-    res.status(401).json({
-      message: 'Invalid token',
-      error: error.message
-    });
-  }
-};
 
 // Protected Routes
 router.get('/check-auth', verifyAdminToken, (req, res) => {
