@@ -45,8 +45,7 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
 
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
-    
-    // Delete the local file
+
     await unlinkAsync(req.file.path);
 
     res.json({
@@ -56,7 +55,6 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
   } catch (error) {
     console.error('Error uploading image:', error);
     
-    // Clean up the local file if it exists
     if (req.file) {
       try {
         await unlinkAsync(req.file.path);
