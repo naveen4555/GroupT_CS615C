@@ -1,7 +1,7 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 // Register
@@ -78,8 +78,8 @@ router.post('/login', async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Login error:', error);
     res.status(500).json({ message: error.message });
+    console.error('Login error:', error);
   }
 });
 
