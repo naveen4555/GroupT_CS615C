@@ -9,33 +9,41 @@ const StorySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  tags: [{
-    type: String
-  }],
-  snapshots: [{
-    text: {
-      type: String,
-      required: true
-    },
-    links: [{
-      url: {
-        type: String,
-        required: true
-      },
-      description: String
-    }],
-    pictures: [{
-      url: {
-        type: String,
-        required: true
-      },
-      caption: String
-    }],
-    order: {
-      type: Number,
-      required: true
+  tags: [
+    {
+      type: String
     }
-  }],
+  ],
+  snapshots: [
+    {
+      text: {
+        type: String,
+        required: true
+      },
+      links: [
+        {
+          url: {
+            type: String,
+            required: true
+          },
+          description: String
+        }
+      ],
+      pictures: [
+        {
+          url: {
+            type: String,
+            required: true
+          },
+          caption: String
+        }
+      ],
+      order: {
+        type: Number,
+        required: true
+      }
+    }
+  ],
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
