@@ -83,9 +83,9 @@ const About = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: 20 }}
               viewport={{ once: true }}
               className="bg-white p-8 rounded-lg shadow-sm"
             >
@@ -106,8 +106,8 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
@@ -138,8 +138,8 @@ const About = () => {
               >
                 <motion.div 
                   className="mx-auto w-16 h-16 mb-6"
-                  whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
+                  whileHover={{ rotate: 360 }}
                 >
                   <member.icon 
                     className={`w-full h-full transform transition-all duration-300
@@ -170,8 +170,8 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
@@ -210,8 +210,8 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
               className="bg-white p-6 rounded-lg shadow-sm"
             >
               <h3 className="text-xl font-semibold text-gray-900 mb-4">User-First</h3>
