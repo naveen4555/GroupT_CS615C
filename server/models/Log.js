@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// ─── Log Schema 
 const LogSchema = new mongoose.Schema({
   story: {
     type: mongoose.Schema.Types.ObjectId,
@@ -25,4 +26,5 @@ const LogSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Log', LogSchema); 
+// ─── Export Model
+module.exports = mongoose.model('Log', LogSchema);
